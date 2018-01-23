@@ -17,12 +17,12 @@ class CreateAgenda extends Migration
           $table->increments('id');
           $table->date('data');
           $table->time('hora');
+          $table->integer('id_paciente')->unsigned();
+          $table->integer('id_medico')->unsigned();
+          $table->foreign('id_paciente')->on('pacientes')->references('id');
+          $table->foreign('id_medico')->on('medicos')->references('id');
       });
 
-      Schema::table('agenda', function($table){
-            $table->foreign('id_paciente')->references('id')->on('pacientes');
-            $table->foreign('id_medico')->references('id')->on('medicos');
-      });
     }
 
     /**

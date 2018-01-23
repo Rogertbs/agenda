@@ -21,7 +21,7 @@ class CreatePacientes extends Migration
           $table->string('email')->unique();
       });
   }
-    }
+
 
     /**
      * Reverse the migrations.
