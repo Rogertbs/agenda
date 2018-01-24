@@ -19,6 +19,8 @@ class CreatePacientes extends Migration
           $table->string('telefone');
           $table->string('cpf');
           $table->string('email')->unique();
+          $table->timestamps();
+          $table->softDeletes();
       });
   }
 

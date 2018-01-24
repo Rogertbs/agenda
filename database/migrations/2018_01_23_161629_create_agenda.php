@@ -19,6 +19,8 @@ class CreateAgenda extends Migration
           $table->time('hora');
           $table->integer('id_paciente')->unsigned();
           $table->integer('id_medico')->unsigned();
+          $table->timestamps();
+          $table->softDeletes();
           $table->foreign('id_paciente')->on('pacientes')->references('id');
           $table->foreign('id_medico')->on('medicos')->references('id');
       });

@@ -19,6 +19,8 @@ class CreateMedicos extends Migration
           $table->string('telefone');
           $table->string('cpf');
           $table->string('crm');
+          $table->timestamps();
+          $table->softDeletes();
       });
     }
 
