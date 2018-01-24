@@ -7,6 +7,10 @@ use App\Medicos;
 
 class MedicosController extends Controller
 {
+
+    public function __construct() {
+       $this->middleware('auth', ['except' => ['index', 'show']]);
+   }
     //
     public function index()
     {
@@ -64,7 +68,7 @@ class MedicosController extends Controller
         }
 
         $medico->delete();
-        
-        return response()->json(['message', 'Médico foi deletado'], 202);
+
+        return response()->json(['message', 'Médico deletado com sucesso!'], 202);
     }
 }
