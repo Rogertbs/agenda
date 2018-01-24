@@ -11,10 +11,25 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+//
+// Auth::routes();
+//
+// Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(array('prefix' => 'api'), function()
+{
+    Route::get('/', function(){
+        return response()->json(['message' => 'Agenda API', 'status' => 'Connected']);
+    });
+
+    Route::resource('medicos', 'MedicosController');
+    Route::resource('pacientes', 'PacientesController');
+    Route::resource('agendas', 'AgendasController');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', function (){
+    return redirect('api');
+});
