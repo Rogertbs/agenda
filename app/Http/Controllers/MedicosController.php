@@ -8,10 +8,10 @@ use App\Medicos;
 class MedicosController extends Controller
 {
 
-   //  public function __construct() {
-   //     $this->middleware('auth', ['except' => ['index', 'show']]);
-   // }
-    //
+    public function __construct() {
+       $this->middleware('jwt.auth');
+   }
+
     public function index()
     {
         $medicos = Medicos::all();

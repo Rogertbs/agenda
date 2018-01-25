@@ -30,7 +30,7 @@ class AuthController extends Controller
            'error' => 'Invalid credentials'
          ], 401);
        }
-       
+
        // Validate Password
        if (!Hash::check($credentials['password'], $user->password)) {
            return response()->json([
@@ -48,7 +48,7 @@ class AuthController extends Controller
        return response()->json([
          'access_token' => $token,
          'token_type' => 'bearer',
-         'expires_in' => JWTAuth::decode()->get('exp')
+         'expires_in' => $expiration
        ]);
      }
 
