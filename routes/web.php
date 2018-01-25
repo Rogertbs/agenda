@@ -28,6 +28,9 @@ Route::group(array('prefix' => 'api'), function()
     Route::resource('medicos', 'MedicosController');
     Route::resource('pacientes', 'PacientesController');
     Route::resource('agendas', 'AgendasController');
+
+    Route::post('auth/login', 'AuthController@authenticate');
+
 });
 
 Route::get('/', function (){
