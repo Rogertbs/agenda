@@ -19,6 +19,7 @@ class AuthController extends Controller
 
      public function authenticate(Request $request) {
        // Get only email and password from request
+
        $credentials = $request->only('email', 'password');
 
        // Get user by email
@@ -52,9 +53,10 @@ class AuthController extends Controller
        ]);
      }
 
-    public function index()
+    public function index(Request $req)
     {
         //
+        return ($req);
     }
 
     /**
