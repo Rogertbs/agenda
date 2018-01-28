@@ -10,6 +10,7 @@ class Agendas extends Model
 
      protected $dates = [ 'delete_at' ];
 
+
      public function medicos()
      {
          return $this->belongsTo('App\Medicos');

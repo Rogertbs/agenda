@@ -12,6 +12,6 @@ class Pacientes extends Model
 
     public function agendas()
     {
-        return $this->hasMany('App\Agendas');
+        return $this->belongsToMany('App\Agendas', 'id_paciente');
     }
 }

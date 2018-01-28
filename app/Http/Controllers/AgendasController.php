@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Agendas;
 
 class AgendasController extends Controller
 {
@@ -14,6 +15,7 @@ class AgendasController extends Controller
 
    public function index()
    {
+
        $agendas = Agendas::all();
        return response()->json($agendas);
    }
