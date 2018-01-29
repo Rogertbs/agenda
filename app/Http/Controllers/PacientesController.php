@@ -15,7 +15,10 @@ class PacientesController extends Controller
     public function index()
     {
         $pacientes = Pacientes::all();
-        return response()->json($pacientes);
+        if($pacientes){
+            return response()->json(['status' => 'successes', 'result' => $pacientes]);
+        }
+        return response()->json(['status' => 'error', 'result' => 'not found'], 404);
     }
 
     public function show($id)
@@ -28,7 +31,7 @@ class PacientesController extends Controller
             ], 404);
         }
 
-        return response()->json($paciente);
+        return response()->json('status' => 'success', 'result' => $paciente);
     }
 
     public function store(Request $req)
@@ -67,7 +70,7 @@ class PacientesController extends Controller
             ], 400);
         }
 
-        $medico->delete();
+        $paciente->delete();
 
         return response()->json(['message', 'Paciente deletado com sucesso!'], 202);
     }
