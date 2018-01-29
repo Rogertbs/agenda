@@ -15,8 +15,11 @@ class AgendasController extends Controller
 
    public function index()
    {
+       $agendas = new Agendas;
+       $agendas = $agendas->with('medicos');
+       $agendas = $agendas->with('pacientes');
+       $agendas = $agendas->get();
 
-       $agendas = Agendas::all();
        return response()->json($agendas);
    }
 
