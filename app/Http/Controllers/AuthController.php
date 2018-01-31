@@ -46,6 +46,12 @@ class AuthController extends Controller
        $objectToken = JWTAuth::setToken($token);
        $expiration = JWTAuth::decode($objectToken->getToken())->get('exp');
 
+       //save token
+
+       $user = User::find($user->id);
+       $user->remember_token = $token;
+       $user->save();
+
        return response()->json([
          'access_token' => $token,
          'token_type' => 'bearer',
@@ -125,4 +131,13 @@ class AuthController extends Controller
     {
         //
     }
+
+    // public function __construct() {
+    //    $this->middleware('jwt.auth');
+    // }
+
+    public function check(Request $req)
+    {
+        return response()->json(['message', 'Token Válido!'], 202);
+   }
 }
