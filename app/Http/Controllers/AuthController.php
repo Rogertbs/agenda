@@ -46,12 +46,7 @@ class AuthController extends Controller
        $objectToken = JWTAuth::setToken($token);
        $expiration = JWTAuth::decode($objectToken->getToken())->get('exp');
 
-       //save token
-
-       $user = User::find($user->id);
-       $user->remember_token = $token;
-       $user->save();
-
+  
        return response()->json([
          'access_token' => $token,
          'token_type' => 'bearer',
